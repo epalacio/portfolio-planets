@@ -5,3 +5,8 @@
 body {
   margin: 0;
 }
+
+.App {
+  background-color: #070724;
+  background-image: url('./assets/background-stars.svg');
+}

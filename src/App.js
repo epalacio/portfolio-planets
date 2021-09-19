@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState,useEffect} from 'react';
 
-function App() {
+const App = () => {
+
+  const [planets,setPlanets]=useState([]);
+
+  const getPlanets=()=>{
+    fetch('data.json',{
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(myJson) {
+        setPlanets(myJson)
+      });
+  }
+  useEffect(()=>{
+    getPlanets()
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-9xl">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App h-screen text-fontWhite">
+      {planets.map(planet =>{
+        return <p key={planet.id}>{planet.name.toLowerCase()}</p>
+      })}
     </div>
   );
 }
