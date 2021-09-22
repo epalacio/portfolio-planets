@@ -1,20 +1,17 @@
 import React,{useState,useEffect} from 'react';
 
+import Home from './pages/Home';
+
 const App = () => {
 
   const [planets,setPlanets]=useState([]);
 
-  const getPlanets=()=>{
-    fetch('data.json',{
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    })
-      .then(function(response){
+  const getPlanets= () =>{
+    fetch('data.json')
+      .then((response) => {
         return response.json();
       })
-      .then(function(myJson) {
+      .then((myJson) => {
         setPlanets(myJson)
       });
   }
@@ -24,9 +21,10 @@ const App = () => {
 
   return (
     <div className="App h-screen text-fontWhite">
-      {planets.map(planet =>{
+      {planets.map(planet => {
         return <p key={planet.id}>{planet.name.toLowerCase()}</p>
       })}
+      <Home planetsDB={planets}/>
     </div>
   );
 }
