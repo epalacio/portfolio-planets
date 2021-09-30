@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 
 import Home from './pages/Home';
+import Planet from './pages/PlanetPage';
 
 const App = () => {
 
@@ -20,11 +21,12 @@ const App = () => {
   },[])
 
   return (
-    <div className="App h-screen text-fontWhite">
-      {planets.map(planet => {
+    <div className="App h-full text-fontWhite">
+      <Planet/>
+      {/* {planets.map(planet => {
         return <p key={planet.id}>{planet.name.toLowerCase()}</p>
       })}
-      <Home planetsDB={planets}/>
+      <Home planetsDB={planets}/> */}
     </div>
   );
 }
