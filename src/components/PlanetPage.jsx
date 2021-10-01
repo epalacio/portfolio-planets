@@ -1,25 +1,11 @@
-import React,{useState,useEffect} from 'react';
+import { planetsData } from '../data'
 
 import earthImg from '../assets/planet-earth.svg'
 import iconSource from '../assets/icon-source.svg'
 
-const Planet = ({chosenPlanet}) => {
+const Planet = () => {
 
-    const [planets,setPlanets]=useState([]);
-
-    const getPlanets= () =>{
-        fetch('data.json')
-        .then((response) => {
-            return response.json();
-        })
-        .then((myJson) => {
-            setPlanets(myJson)
-        });
-    }
-    useEffect(()=>{
-        getPlanets()
-    },[])
-
+    const [chosenPlanet, setChosenPlanet] = ('');
 
     const contentTitles = {
         'mobileButtons': ['OVERVIEW', 'STRUCTURE', 'SURFACE'],
@@ -32,8 +18,10 @@ const Planet = ({chosenPlanet}) => {
         ]
     }
 
+    console.log(planetsData)
+
     return ( 
-        <section className='pb-12 pt-0 sm:pt-12'>
+        <section className='pb-12 pt-0 sm:pt-12' key={planetsData[0]}>
             <div className='block md:hidden flex justify-around border-t-2 border-b-2 border-cloudBurst'>
                 {contentTitles.mobileButtons.map((button, i) => {
                     return (
@@ -50,7 +38,7 @@ const Planet = ({chosenPlanet}) => {
                     {/* Description */}
                     <div className='mx-auto flex flex-col md:flex-row lg:flex-col justify-between items-center'>
                         <div className='text-center sm:text-left w-planetDescription'>
-                            <h2 className='font-antonio text-planetNameMobile md:text-planetNameTablet lg:text-planetNameDesktop py-6'>{planets[2].name}</h2>
+                            <h2 className='font-antonio text-planetNameMobile md:text-planetNameTablet lg:text-planetNameDesktop py-6'>{planetsData[0].revolution}</h2>
                             <p className='py-6'>Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.</p>
                             <div className='flex flex-row pb-6 item-scenter justify-center md:justify-start md:pl-6 text-cloudBurst'>
                                 <p className='mr-2'>Source : </p>
