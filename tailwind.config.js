@@ -23,7 +23,9 @@ module.exports = {
         'spartan': ['Spartan', 'sans-serif'],
       },
       fontSize: {
+        'planetsTitle': '28px',
         'mobileButtons': '12px',
+        'mobileMenu': '16px',
         'planetNameMobile': '40px',
         'planetNameTablet': '48px',
         'planetNameDesktop': '80px',
@@ -31,6 +33,7 @@ module.exports = {
       }, 
       width: {
         'planetDescription': '350px',
+        'planetCircle': '14px'
       },
       maxWidth: {
         'planetDescription': '350px',
@@ -41,6 +44,9 @@ module.exports = {
       },
       minWidth: {
         'footerBox': '164px',
+      },
+      height: {
+        'planetCircle': '14px'
       },
       maxHeight: {
         'desktopEarth': '450px',

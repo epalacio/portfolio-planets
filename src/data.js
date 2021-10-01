@@ -1,4 +1,4 @@
-[
+export const planetsData = [
   {
     "id": 1,
     "name": "Mercury",

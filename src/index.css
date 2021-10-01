@@ -5,9 +5,6 @@
 body {
   margin: 0;
   font-family: 'Spartan', sans-serif;
-}
-
-.App {
   background-color: #070724;
   background-image: url('./assets/background-stars.svg');
 }
