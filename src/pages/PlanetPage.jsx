@@ -1,7 +1,25 @@
+import React,{useState,useEffect} from 'react';
+
 import earthImg from '../assets/planet-earth.svg'
 import iconSource from '../assets/icon-source.svg'
 
-const Planet = () => {
+const Planet = ({chosenPlanet}) => {
+
+    const [planets,setPlanets]=useState([]);
+
+    const getPlanets= () =>{
+        fetch('data.json')
+        .then((response) => {
+            return response.json();
+        })
+        .then((myJson) => {
+            setPlanets(myJson)
+        });
+    }
+    useEffect(()=>{
+        getPlanets()
+    },[])
+
 
     const contentTitles = {
         'mobileButtons': ['OVERVIEW', 'STRUCTURE', 'SURFACE'],
@@ -32,7 +50,7 @@ const Planet = () => {
                     {/* Description */}
                     <div className='mx-auto flex flex-col md:flex-row lg:flex-col justify-between items-center'>
                         <div className='text-center sm:text-left w-planetDescription'>
-                            <h2 className='font-antonio text-planetNameMobile md:text-planetNameTablet lg:text-planetNameDesktop py-6'>EARTH</h2>
+                            <h2 className='font-antonio text-planetNameMobile md:text-planetNameTablet lg:text-planetNameDesktop py-6'>{planets[2].name}</h2>
                             <p className='py-6'>Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.</p>
                             <div className='flex flex-row pb-6 item-scenter justify-center md:justify-start md:pl-6 text-cloudBurst'>
                                 <p className='mr-2'>Source : </p>
