@@ -29,10 +29,21 @@ module.exports = {
         'planetNameDesktop': '80px',
         'boxContent': '20px'
       }, 
+      width: {
+        'planetDescription': '350px',
+      },
       maxWidth: {
+        'planetDescription': '350px',
+        'footerBox': '164px',
         'mobileEarth': '173px',
         'tabletEarth': '285px',
-        'desktopEarth': '450px'
+        'desktopEarth': '450px',
+      },
+      minWidth: {
+        'footerBox': '164px',
+      },
+      maxHeight: {
+        'desktopEarth': '450px',
       }
     }
   },
