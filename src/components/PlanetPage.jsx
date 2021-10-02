@@ -1,11 +1,19 @@
+import { useState } from 'react';
+
 import { planetsData } from '../data'
 
-import earthImg from '../assets/planet-earth.svg'
+import mercuryImg from '../assets/planet-mercury.svg'
+import venusImg from '../assets/planet-venus.svg'
+import EarthImg from '../assets/planet-earth.svg'
+import marsImg from '../assets/planet-mars.svg'
+import jupiterImg from '../assets/planet-jupiter.svg'
+import saturnImg from '../assets/planet-saturn.svg'
+import uranusImg from '../assets/planet-uranus.svg'
+import neptuneImg from '../assets/planet-neptune.svg'
 import iconSource from '../assets/icon-source.svg'
 
-const Planet = () => {
 
-    const [chosenPlanet, setChosenPlanet] = ('');
+const Planet = (props) => {
 
     const contentTitles = {
         'mobileButtons': ['OVERVIEW', 'STRUCTURE', 'SURFACE'],
@@ -18,10 +26,10 @@ const Planet = () => {
         ]
     }
 
-    console.log(planetsData)
+
 
     return ( 
-        <section className='pb-12 pt-0 sm:pt-12' key={planetsData[0]}>
+        <section className='pb-12 pt-0 sm:pt-12'  key={planetsData[props.planet].id}>
             <div className='block md:hidden flex justify-around border-t-2 border-b-2 border-cloudBurst'>
                 {contentTitles.mobileButtons.map((button, i) => {
                     return (
@@ -34,12 +42,12 @@ const Planet = () => {
             <div className='mx-auto max-w-screen-lg lg:max-w-screen-2xl'>
                 {/* Main section with planet and description */}
                 <div className='mx-auto px-2 md:px-20 lg:flex lg:px-0 lg:items-center'>
-                    <img className='my-16 mx-auto max-w-mobileEarth sm:max-w-tabletEarth lg:max-w-desktopEarth lg:max-h-desktopEarth' src={earthImg} alt='Planet earth illustration' />
+                    <img className='my-16 mx-auto max-w-mobileEarth sm:max-w-tabletEarth lg:max-w-desktopEarth lg:max-h-desktopEarth' src={props.planetImg} alt='Planet earth illustration' />
                     {/* Description */}
                     <div className='mx-auto flex flex-col md:flex-row lg:flex-col justify-between items-center'>
                         <div className='text-center sm:text-left w-planetDescription'>
-                            <h2 className='font-antonio text-planetNameMobile md:text-planetNameTablet lg:text-planetNameDesktop py-6'>{planetsData[0].revolution}</h2>
-                            <p className='py-6'>Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.</p>
+                            <h2 className='font-antonio text-planetNameMobile md:text-planetNameTablet lg:text-planetNameDesktop py-6'>{planetsData[props.planet].name}</h2>
+                            <p className='py-6'>{planetsData[props.planet].overview.content}</p>
                             <div className='flex flex-row pb-6 item-scenter justify-center md:justify-start md:pl-6 text-cloudBurst'>
                                 <p className='mr-2'>Source : </p>
                                 <a href='https://en.wikipedia.org/wiki/Earth' target='_blank' rel='noreferrer' className='underline font-bold ml-2'>Wikipedia</a>
