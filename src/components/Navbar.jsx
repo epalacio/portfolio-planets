@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Transition } from '@headlessui/react';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
+  const handleClick = (planetIndex) => {
+    props.navChosenPlanet(planetIndex)
+  }
+
   return (
       <nav className='absolute top-0 left-0 right-0'>
         <div className='max-w-screen-2xl mx-auto p-8'>
@@ -14,14 +18,14 @@ const Navbar = () => {
               </div>
               <div className='hidden md:block'>
                 <div className='ml-10 flex items-baseline space-x-4'>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>MERCURY</a>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>VENUS</a>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>EARTH</a>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>MARS</a>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>JUPITER</a>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>SATURN</a>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>URANUS</a>
-                  <a href='/' className='px-3 py-2 text-mobileButtons text-titles hover:text-white'>NEPTUNE</a>
+                  <p onClick={() => {handleClick('0')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>MERCURY</p>
+                  <p onClick={() => {handleClick('1')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>VENUS</p>
+                  <p onClick={() => {handleClick('2')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>EARTH</p>
+                  <p onClick={() => {handleClick('3')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>MARS</p>
+                  <p onClick={() => {handleClick('4')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>JUPITER</p>
+                  <p onClick={() => {handleClick('5')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>SATURN</p>
+                  <p onClick={() => {handleClick('6')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>URANUS</p>
+                  <p onClick={() => {handleClick('7')}}className='cursor-pointer px-3 py-2 text-mobileButtons text-titles hover:text-white'>NEPTUNE</p>
                 </div>
               </div>
             </div>
