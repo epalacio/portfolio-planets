@@ -1,15 +1,17 @@
 import { useState } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
 import Navbar from './components/Navbar';
 import Planet from './components/PlanetPage';
 
-import mercuryImg from './assets/planet-mercury.svg'
-import venusImg from './assets/planet-venus.svg'
-import EarthImg from './assets/planet-earth.svg'
-import marsImg from './assets/planet-mars.svg'
-import jupiterImg from './assets/planet-jupiter.svg'
-import saturnImg from './assets/planet-saturn.svg'
-import uranusImg from './assets/planet-uranus.svg'
-import neptuneImg from './assets/planet-neptune.svg'
+import Mercury from './pages/Mercury';
+import Venus from './pages/Venus';
+import Earth from './pages/Earth';
+import Mars from './pages/Mars';
+import Jupiter from './pages/Jupiter';
+import Saturn from './pages/Saturn';
+import Uranus from './pages/Uranus';
+import Neptune from './pages/Neptune';
 
 const App = () => {
 
@@ -21,17 +23,48 @@ const App = () => {
   }
 
   return (
+    <Router>
     <div className='App flex h-screen text-fontWhite relative'>
       <Navbar
         navChosenPlanet={chosenPlanet}
       />
       <div className='flex-grow m-auto md:max-w-screen-xl lg:max-w-screen-2xl pt-32 md:pt-0'>
-        <Planet
+        {/* <Planet
           planet={planet}
-          planetImg={marsImg}
-        />
+          planetImg={`${chosenPlanet}Img`}
+        /> */}
+        <Switch>
+          <Route path='/mercury'>
+            <Mercury />
+          </Route>
+          <Route path='/venus'>
+            <Venus />
+          </Route>
+          <Route path='/earth'>
+            <Earth />
+          </Route>
+          <Route exact path='/'>
+            <Earth />
+          </Route>
+          <Route path='/mars'>
+            <Mars />
+          </Route>
+          <Route path='/jupiter'>
+            <Jupiter />
+          </Route>
+          <Route path='/saturn'>
+            <Saturn />
+          </Route>
+          <Route path='/uranus'>
+            <Uranus />
+          </Route>
+          <Route path='/neptune'>
+            <Neptune />
+          </Route>
+        </Switch>
       </div>
     </div>
+    </Router>
   );
 }
 
